@@ -17,15 +17,17 @@ public class LearnerRegistrationPage {
 
     LearnerRegistrationPage learnerRegistrationPage;
     By RegisterLearner = By.xpath("//button[@text='Sign In']");
-    By NonSaCitizen = By.id("parent-reg-step1-noSaCitizen");
+    By NonSaCitizenLearner = By.id("learner-reg-nonSaCitizen");
     By SaCitizen = By.id("parent-reg-step1-saCitizen");
     By DocumentStatusUndocumented = By.id("parent-reg-step1-notDocumented");
-    By DocumentStatusDocumented = By.id("parent-reg-step1-documented");
-    By clickCountryOfOrigin = By.cssSelector(".ant-select-selection__placeholder");//ToDo
-    By selectClickCountryOfOrigin = By.cssSelector("li.ant-select-dropdown-menu-item:nth-child(1)");//ToDo
-    By Name = By.name("firstName");
-    By Surname = By.name("lastName");
-    By GenderMale = By.id("parent-reg-step1-male");
+    By LearnerDocumentStatusDocumented = By.id("learner-reg-documented");
+    By clickCountryOfOriginOfLearner = By.xpath("//div[contains(text(),'Select a Country of Origin')]");//ToDo
+    By selectClickCountryOfOriginLearner = By.xpath("//li[contains(text(),'Afghanistan')]");//ToDo
+    By IAmInTheCountryForStudy = By.id("learner-reg-studyReason");
+
+    By LearnerName = By.id("learner-reg-firstName");
+    By LearnerSurname = By.id("learner-reg-lastName");
+    By GenderMaleLearner = By.id("learner-reg-male");
     By emailAddress = By.name("emailAddress");
     By CellphoneNumber = By.id("parent-reg-step1-mobileNumber");
     By GenderFemale = By.id("parent-reg-step1-female");
@@ -36,9 +38,10 @@ public class LearnerRegistrationPage {
     By ButtonOK = By.cssSelector(".gde-terms-modal .gde-modal-ok-button");
     By EnterYourOTP = By.id("rcDialogTitle0");
     By confirmOTPButton = By.cssSelector("button.ant-btn:nth-child(2)");
-    By PassportNumber = By.id("parent-reg-step1-passportNumber");
-    By clickDateOfBirth = By.cssSelector("ant-calendar-picker-input ant-input");
-    By DateOfBirth = By.cssSelector(".ant-calendar-date-input-wrap");
+    By PassportNumberLearner = By.id("learner-reg-passportNumber");
+    By clickDateOfBirthLearner = By.id("learner-reg-dateOfBirth");
+    By clickPreviousYears = By.cssSelector(".ant-calendar-header a[role='button']");
+    By DateOfBirthLearner = By.cssSelector("ant-calendar-picker-input");
     By workPermitImmigrationStatus = By.id("parent-reg-step1-workPermit");
     By countryOfOrigin = By.cssSelector(".ant-select-selection__placeholder");
     By NextStep = By.id("parent-reg-step1-submitButton");
@@ -65,7 +68,10 @@ public class LearnerRegistrationPage {
     By SchoolName = By.id("learner-application-searchSchoolName");
     By SchoolSearchResultsTitle = By.xpath("//div[contains(text(),'School Search Result(s)')]"); //get text of search results
     By selectSchoolsToApply = By.cssSelector("ant-checkbox-input");
+    By monthOfBirth = By.cssSelector(".ant-calendar-body td");
     By submitApplications = By.id("learner-application-submitApplications");
+
+//    String dob = "2008-01-01";
 
 
 
@@ -81,9 +87,21 @@ public class LearnerRegistrationPage {
 //        driver.findElement("");
 //    }
 
+    public void previousYears(){
+        WebElement element = driver.findElement(clickPreviousYears);
+        for (int i = 0; i < 8;i++){
+            element.click();
+        }
+        driver.findElement(monthOfBirth).click();
+    }
+
     public void SubmitApplications (){
         driver.findElement(submitApplications).click();
         driver.manage().timeouts().implicitlyWait(10000,TimeUnit.MILLISECONDS);
+    }
+
+    public void inTheCountryForStudy(){
+        driver.findElement(IAmInTheCountryForStudy).click();
     }
 
     public void selectSchoolsToApplyTo(){
@@ -181,8 +199,8 @@ public class LearnerRegistrationPage {
     }
 
     public  void CountryOfOrigin(){
-        driver.findElement(clickCountryOfOrigin).click();
-        driver.findElement(selectClickCountryOfOrigin).click();
+        driver.findElement(clickCountryOfOriginOfLearner).click();
+        driver.findElement(selectClickCountryOfOriginLearner).click();
     }
 
     public void nextButton(){
@@ -230,17 +248,17 @@ public class LearnerRegistrationPage {
 //    }
 
     public void DocumentStatusDocumented() {
-        driver.findElement(DocumentStatusDocumented).click();
+        driver.findElement(LearnerDocumentStatusDocumented).click();
     }
 
     public void dateOfBirth(String dob) {
-        driver.findElement(DateOfBirth).click();
-        driver.findElement(DateOfBirth).sendKeys(dob);
+        driver.findElement(DateOfBirthLearner).click();
+//        driver.findElement(DateOfBirthLearner).sendKeys(dob);
 
     }
 
     public void clickDOB(){
-        driver.findElement(clickDateOfBirth);
+        driver.findElement(clickDateOfBirthLearner).click();
     }
 
 //    public void IntentToApplyToSchoolsCloseToYourPlaceOfWork() {
@@ -275,7 +293,7 @@ public class LearnerRegistrationPage {
 
 
     public void NationalityNonSouthAfricanCitizen() {
-        driver.findElement(NonSaCitizen).click();
+        driver.findElement(NonSaCitizenLearner).click();
     }
 
 
@@ -297,7 +315,7 @@ public class LearnerRegistrationPage {
     }
 
     public void PassportNumber(String passportNumber) {
-        driver.findElement(PassportNumber).sendKeys(passportNumber);
+        driver.findElement(PassportNumberLearner).sendKeys(passportNumber);
     }
 //
 //    public void DateOfBirth(String dob) {
@@ -306,15 +324,15 @@ public class LearnerRegistrationPage {
 //    }
 
     public void Name(String name) {
-        driver.findElement(Name).sendKeys(name);
+        driver.findElement(LearnerName).sendKeys(name);
     }
 
     public void Surname(String surname) {
-        driver.findElement(Surname).sendKeys(surname);
+        driver.findElement(LearnerSurname).sendKeys(surname);
     }
 
     public void GenderMale() {
-        driver.findElement(GenderMale).click();
+        driver.findElement(GenderMaleLearner).click();
     }
 
     public void GenderFemale() {

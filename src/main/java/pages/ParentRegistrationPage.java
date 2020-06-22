@@ -91,7 +91,7 @@ public class ParentRegistrationPage {
         driver.findElement(IntentToApplyToWork).click();
     }
 
-    public void searchForHomeAddress(String AddressHome) throws InterruptedException {
+    public void searchForHomeAddress(String AddressHome) throws InterruptedException { //ToDo
         driver.findElement(HomeAddress).sendKeys(AddressHome);
         Thread.sleep(2000);
         driver.findElement(clickFirstItemOnListHomeAddress).click();
@@ -225,7 +225,9 @@ public class ParentRegistrationPage {
         driver.findElement(NonSaCitizen).click();
     }
 
-
+       public By getNonSaCitizen(){
+        return this.NonSaCitizen;
+       }
 //    public void DocumentStatusUndocumented() {
 //        DocumentStatusUndocumented.click();
 //    }

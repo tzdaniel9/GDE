@@ -9,17 +9,17 @@ import pages.ParentRegistrationPage;
 public class NonSADocumentedParentRegistrationTest extends testBase {
 
     LearnerRegistrationPage learnerRegistrationPage;
-    String phoneNumber = "0700000008";
+    String phoneNumber = "0700000020";
     String password = "Test@1234";
     String confirmPassword = "Test@1234";
     String emailAddress = "box@fusion.co.za";
-    String passportNumberParent = "zz000008";
+    String passportNumberParent = "zz000021";
     String name = "box";
     String surname = "fusion";
     String OTPNumber = "000000";
     String homeAddress = "32 Nora Avenue";
     String workAddress = "265 West Ave";
-    String passportNumberLearner = "zz100000";
+    String passportNumberLearner = "zz100001";
     String nameLearner = "boxed";
     String surnameLearner = "fusion";
     String dateOfBirth = "2008-01-01";
@@ -57,17 +57,25 @@ public class NonSADocumentedParentRegistrationTest extends testBase {
         Thread.sleep(5000);
         LearnerRegistrationPage learnerRegistrationPage = parentRegistrationPage.submitWorkAddress();
         Thread.sleep(2000);
-        parentRegistrationPage.NationalityNonSouthAfricanCitizen();
-        parentRegistrationPage.DocumentStatusDocumented();
+        learnerRegistrationPage.NationalityNonSouthAfricanCitizen();
+        learnerRegistrationPage.DocumentStatusDocumented();
         learnerRegistrationPage.CountryOfOrigin();
-        learnerRegistrationPage.ImmigrationStatus();
+        learnerRegistrationPage.inTheCountryForStudy();
         learnerRegistrationPage.PassportNumber(passportNumberLearner);
         learnerRegistrationPage.Name(nameLearner);
         learnerRegistrationPage.Surname(surnameLearner);
         learnerRegistrationPage.GenderMale();
+//        learnerRegistrationPage.clickDOB();
         learnerRegistrationPage.clickDOB();
-        learnerRegistrationPage.dateOfBirth(dateOfBirth);
-//        learnerRegistrationPage
+        learnerRegistrationPage.previousYears();
+        learnerRegistrationPage.homeLanguage();
+        learnerRegistrationPage.Race();
+        learnerRegistrationPage.Grade8();
+        learnerRegistrationPage.PreferredLanguageOfTeaching();
+        learnerRegistrationPage.isSchoolInGauteng();
+        learnerRegistrationPage.publicOrPrivateSchool();
+        learnerRegistrationPage.applyToSchools();
+
 
 
     }

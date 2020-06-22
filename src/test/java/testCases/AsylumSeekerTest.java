@@ -7,12 +7,12 @@ import pages.ParentRegistrationPage;
 public class AsylumSeekerTest extends testBase {
     String name = "Mary";
     String surname = "Jane";
-    String mobileNumber = "0650000001";
+    String mobileNumber = "0650000004";
     String password = "Test@1234";
     String confirmPassword = "Test@1234";
     String otpPin = "000000";
     String homeAddress = "265 West Ave";
-    String asylumSeekerNumber = "2010mn02";
+    String asylumSeekerNumber = "2010mn04";
     String workAddress = "265 West Ave";
 
 

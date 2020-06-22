@@ -37,6 +37,10 @@ public class testBase {
         loginPage = new LoginPage(driver);
         learnerRegistrationPage = new LearnerRegistrationPage(driver);
 
+
+        driver.manage().deleteAllCookies();
+        driver.manage().window().maximize();
+
     }
 
 //    @AfterClass
