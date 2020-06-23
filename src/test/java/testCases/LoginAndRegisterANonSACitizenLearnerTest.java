@@ -9,7 +9,7 @@ import pages.LoginPage;
 import pages.ParentRegistrationPage;
 
 public class LoginAndRegisterANonSACitizenLearnerTest extends testBase {
-    HomePage homePage;
+    LoginPage loginPage;
 
     String idOrPassport = "zz000002";
     String password = "Test1234";

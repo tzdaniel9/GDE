@@ -59,7 +59,7 @@ public class LearnerRegistrationPage {
     By ethnicity = By.xpath("//li[contains(text(),'White')]");
     By grade8 = By.id("learner-reg-grade8");
     By preferedLanguageOfTeaching = By.xpath("//div[contains(text(),'Select Preferred Language of Teaching')]");
-    By languageOfTeaching = By.cssSelector("ant-select-dropdown-menu-item learner-reg-preferredLanguage-1");
+    By languageOfTeaching = By.cssSelector(".learner-reg-preferredLanguage-1");
     By IsSchoolInGauteng = By.id("learner-reg-isSchoolGauteng");
     By IsSchoolPublicOrPrivate = By.id("learner-reg-isSchoolPublic");
     By ApplyToSchools = By.id("learner-reg-submitButton");
@@ -70,6 +70,11 @@ public class LearnerRegistrationPage {
     By selectSchoolsToApply = By.cssSelector("ant-checkbox-input");
     By monthOfBirth = By.cssSelector(".ant-calendar-body td");
     By submitApplications = By.id("learner-application-submitApplications");
+    By ApplyToMoreSchools = By.xpath("//span[contains(text(),'Apply to More Schools')]");
+    By ContinueToDocuments = By.cssSelector(".gde-app-success-upload-documents-button");
+//    By SchoolSearchResultsCheck = By.cssSelector("gde-school-result-details-col-2");
+    By SchoolSearchResultsCheck = By.xpath("//div[1]//div[2]//div[2]//div[1]/div[2]//div[2]//div[2]/label/span/input");
+
 
 //    String dob = "2008-01-01";
 
@@ -87,9 +92,36 @@ public class LearnerRegistrationPage {
 //        driver.findElement("");
 //    }
 
+//    public void HomeAddressWithSchoolsFeederZone(){
+//        driver.findElement(applicationOption();)
+//    }
+
+
+    public DocumentsPage continueToDocuments(){
+        driver.findElement(ContinueToDocuments).click();
+        return new DocumentsPage(driver);
+    }
+
+    public void schoolSearchResults(){
+
+        driver.findElement(SchoolSearchResultsCheck).click();
+//        WebElement element = driver.findElement(SchoolSearchResultsCheck);
+//       while (element != null){
+//           element.click();
+//       }
+//        for (int i =0; i < 3;i++){
+//            element.click();
+//        }
+    }
+
+    public void applyToMoreSchools(){
+        driver.findElement(ApplyToMoreSchools).click();
+    }
+
+
     public void previousYears(){
         WebElement element = driver.findElement(clickPreviousYears);
-        for (int i = 0; i < 8;i++){
+        for (int i = 0; i < 11;i++){
             element.click();
         }
         driver.findElement(monthOfBirth).click();
@@ -133,8 +165,9 @@ public class LearnerRegistrationPage {
 
 
 
-    public void PreferredLanguageOfTeaching(){
-        driver.findElement(preferedLanguageOfTeaching).click();
+    public void PreferredLanguageOfTeaching(String teachingLanguage) throws InterruptedException {
+        driver.findElement(preferedLanguageOfTeaching).click();//sendKeys(teachingLanguage);
+        Thread.sleep(500);
         driver.findElement(languageOfTeaching).click();
     }
 

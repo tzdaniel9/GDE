@@ -5,10 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import pages.HomePage;
-import pages.LearnerRegistrationPage;
-import pages.LoginPage;
-import pages.ParentRegistrationPage;
+import pages.*;
 import resources.ElementUtils;
 import resources.JavaScriptUtil;
 import testCases.ParentRegistrationSACitizenTest;
@@ -21,6 +18,8 @@ public class testBase {
     protected JavaScriptUtil javaScriptUtil;
     protected LoginPage loginPage;
     protected LearnerRegistrationPage learnerRegistrationPage;
+    protected DocumentsPage documentsPage;
+
 
     @BeforeClass
     public void setUp(){
@@ -36,6 +35,8 @@ public class testBase {
         javaScriptUtil = new JavaScriptUtil(driver);
         loginPage = new LoginPage(driver);
         learnerRegistrationPage = new LearnerRegistrationPage(driver);
+        documentsPage = new DocumentsPage(driver);
+
 
 
         driver.manage().deleteAllCookies();

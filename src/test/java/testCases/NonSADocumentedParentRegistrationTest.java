@@ -3,17 +3,19 @@ package testCases;
 import base.testBase;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
+import pages.DocumentsPage;
 import pages.LearnerRegistrationPage;
 import pages.ParentRegistrationPage;
 
 public class NonSADocumentedParentRegistrationTest extends testBase {
 
     LearnerRegistrationPage learnerRegistrationPage;
-    String phoneNumber = "0700000020";
+    DocumentsPage documentsPage;
+    String phoneNumber = "0700000044";
     String password = "Test@1234";
     String confirmPassword = "Test@1234";
     String emailAddress = "box@fusion.co.za";
-    String passportNumberParent = "zz000021";
+    String passportNumberParent = "zz000044";
     String name = "box";
     String surname = "fusion";
     String OTPNumber = "000000";
@@ -23,6 +25,7 @@ public class NonSADocumentedParentRegistrationTest extends testBase {
     String nameLearner = "boxed";
     String surnameLearner = "fusion";
     String dateOfBirth = "2008-01-01";
+    String LanguageOfTeaching = "English";
 
 
     @Test
@@ -54,9 +57,9 @@ public class NonSADocumentedParentRegistrationTest extends testBase {
         parentRegistrationPage.submitAddress();
         Thread.sleep(3000);
         parentRegistrationPage.NonIntentToApplyCloseToWork();
-        Thread.sleep(5000);
+        Thread.sleep(7000);
         LearnerRegistrationPage learnerRegistrationPage = parentRegistrationPage.submitWorkAddress();
-        Thread.sleep(2000);
+        Thread.sleep(4000);
         learnerRegistrationPage.NationalityNonSouthAfricanCitizen();
         learnerRegistrationPage.DocumentStatusDocumented();
         learnerRegistrationPage.CountryOfOrigin();
@@ -71,10 +74,24 @@ public class NonSADocumentedParentRegistrationTest extends testBase {
         learnerRegistrationPage.homeLanguage();
         learnerRegistrationPage.Race();
         learnerRegistrationPage.Grade8();
-        learnerRegistrationPage.PreferredLanguageOfTeaching();
+        javaScriptUtil.windowFocus();
+        learnerRegistrationPage.PreferredLanguageOfTeaching(LanguageOfTeaching);
         learnerRegistrationPage.isSchoolInGauteng();
         learnerRegistrationPage.publicOrPrivateSchool();
         learnerRegistrationPage.applyToSchools();
+        Thread.sleep(3000);
+        learnerRegistrationPage.applicationOption();
+        javaScriptUtil.windowFocus();
+        learnerRegistrationPage.schoolName();
+        learnerRegistrationPage.schoolSearchResults();
+        learnerRegistrationPage.SubmitApplications();
+        Thread.sleep(4000);
+//        learnerRegistrationPage.applyToMoreSchools();
+        javaScriptUtil.windowFocus();
+        learnerRegistrationPage.continueToDocuments();
+
+
+
 
 
 

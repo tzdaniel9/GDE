@@ -38,7 +38,8 @@ public class ParentRegistrationPage {
     By countryOfOrigin = By.cssSelector(".ant-select-selection__placeholder");
     By NextStep = By.id("parent-reg-step1-submitButton");
     By PleaseConfirmYourOTP = By.xpath("//input[@placeholder='Enter Your OTP Number']");
-    By OkButtonOnOTP = By.cssSelector("button.ant-btn:nth-child(2)");
+    By OkButtonOnOTP = By.cssSelector(".reg-otp-modal .gde-modal-ok-button");
+//    By OkButtonOnOTP = By.xpath("//span[contains(text(),'OK')]");
     By IDNumber = By.id("parent-reg-step1-citizenIdNumber");
     By DHAyesValidation = By.cssSelector("button.ant-btn:nth-child(2)");
     By HomeAddress = By.id("parent-reg-step2-searchInput");//ToDo
@@ -50,7 +51,29 @@ public class ParentRegistrationPage {
     By AsylumSeekerNumber = By.id("parent-reg-step1-asylumSeekerNumber");
     By searchForWorkAddress = By.id("parent-reg-step2-searchInput");
     By clickFirstItemListOnWorkAddressList = By.cssSelector(".gde-auto-complete-places-suggestions:nth-child(1)");
-
+    By clickFirstItemListOnList = By.cssSelector("div.gde-auto-complete-places-suggestions:nth-child(1)");
+    By DHAValidationName = By.xpath("//input[@placeholder='_E_I_I__']");
+    By DHAValidationSurname = By.xpath("//input[@placeholder='_OU_']");
+    By DHAOkBtn = By.xpath(".gde-modal .gde-modal-ok-button");
+    By DHACancelBtn = By.cssSelector(".gde-modal .gde-modal-cancel-button");
+    By clickDateOfParent = By.id("parent-reg-step1-dateOfBirth");
+    By clickPreviousYears = By.cssSelector(".ant-calendar-header a[role='button']");
+    By monthOfBirth = By.cssSelector(".ant-calendar-body td");
+    By CantFindYourHomeAddress = By.id("parent-reg-step2-cantFindAddressButton");
+    By SuburbOrTownship = By.id("parent-reg-step2-surburbOrTownShip");
+    By FreeStandingHouse = By.id("parent-reg-step2-freeStandingHouse");
+    By HouseNumber = By.id("parent-reg-step2-houseNumber");
+    By StreetName = By.id("parent-reg-step2-streetName");
+    By AreaOrSuburbOrTownShipOrExtension = By.id("parent-reg-step2-areaOrSurburbOrTownshipOrExtension");
+    By SelectYourAddressFromMap = By.id("parent-reg-step2-selectAddressFromMapButton");
+    By searchYourAddressOnMap = By.cssSelector(".gde-map-container .gde-auto-complete-places .gde-input");
+    By SatelliteSearchForAddress = By.cssSelector("ant-input gde-input");
+    By ConfirmButtonOnMap = By.cssSelector("button.ant-btn:nth-child(2)");
+    By CantFindWorkAddress = By.id("parent-reg-step2-cantFindAddressButton");
+    By WhatTypeOfAreaDoYoWorkIn = By.id("parent-reg-step2-plotOrFarmOrRuralArea");
+    By DoesYourLocationHaveAFormAddress = By.id("parent-reg-step2-locationHasNoFormalAddress");
+    By YourLocationDoesHaveAFormAddress = By.id("parent-reg-step2-locationHasFormalAddress");
+    By NameOfTheNearestVillage = By.id("parent-reg-step2-nameOfNearestVillage");
 
 
 
@@ -64,10 +87,102 @@ public class ParentRegistrationPage {
         this.driver = driver;
     }
 
+    public void suburbOrTownship(){
+        driver.findElement(SuburbOrTownship).click();
+    }
 
-//    public boolean validateGdeLogo(){
-//        driver.findElement("");
-//    }
+    public void cantFindWorkAddress(){
+        driver.findElement(CantFindWorkAddress).click();
+    }
+
+    public void yourLocationDoesHaveAFormAddress(){
+        driver.findElement(YourLocationDoesHaveAFormAddress).click();
+    }
+
+    public void clickSelectYourAddressFromMap(){
+        driver.findElement(SelectYourAddressFromMap).click();
+    }
+
+    public void nameOfTheNearestTownOrVillage(String nearestArea) throws InterruptedException {
+        driver.findElement(NameOfTheNearestVillage).sendKeys(nearestArea,Keys.TAB);
+        Thread.sleep(500);
+        driver.findElement(clickFirstItemListOnList).click();
+    }
+
+
+    public void plotFarmRuralArea(){
+        driver.findElement(WhatTypeOfAreaDoYoWorkIn).click();
+    }
+
+    public void doesYourLocationHaveAFormAddress(){
+        driver.findElement(DoesYourLocationHaveAFormAddress).click();
+    }
+
+
+    public void freeStandingHouse(){
+        driver.findElement(FreeStandingHouse).click();
+    }
+
+    public void houseNumber(String houseNumber){
+        driver.findElement(HouseNumber).sendKeys(houseNumber);
+    }
+
+    public void streetName(String streetName){
+        driver.findElement(StreetName).sendKeys(streetName);
+    }
+    public void areaOrSuburbOrTownShipOrExtension(String area) throws InterruptedException {
+        driver.findElement(AreaOrSuburbOrTownShipOrExtension).sendKeys(area);
+        Thread.sleep(500);
+        driver.findElement(clickFirstItemOnListHomeAddress).click();
+    }
+    public void enterYourAddressOnMap(String mapAddress) throws InterruptedException {
+        driver.findElement(searchYourAddressOnMap).sendKeys(mapAddress);
+        Thread.sleep(500);
+        driver.findElement(clickFirstItemListOnList).click();
+    }
+    public void satelliteSearchForAddress(String address) throws InterruptedException {
+        driver.findElement(SatelliteSearchForAddress).sendKeys(address);
+        Thread.sleep(500);
+        driver.findElement(clickFirstItemOnListHomeAddress).click();
+    }
+
+    public void  confirmMap(){
+        driver.findElement(ConfirmButtonOnMap).click();
+    }
+
+
+
+
+
+
+    public void clickCantFindHomeAddress(){
+        driver.findElement(CantFindYourHomeAddress).click();
+    }
+
+    public void clickDOBParent(){
+        driver.findElement(clickDateOfParent).click();
+    }
+
+    public void previousYears(){
+        WebElement element = driver.findElement(clickPreviousYears);
+        for (int i = 0; i < 30;i++){
+            element.click();
+        }
+        driver.findElement(monthOfBirth).click();
+    }
+    public void cancelButtonOnValidSaId(){
+        driver.findElement(DHACancelBtn).click();
+    }
+
+    public void nameForDhaValidation(String name){
+        driver.findElement(DHAValidationName).sendKeys(name);
+    }
+    public void surnameForDhaValidation(String surname){
+        driver.findElement(DHAValidationSurname).sendKeys(surname);
+    }
+    public void oKButtonOnValidSaId(){
+        driver.findElement(DHAOkBtn).click();
+    }
 
     public void asylumSeekerImmigrationStatus() {
         driver.findElement(AsylumSeekerImmigrationStatus).click();
