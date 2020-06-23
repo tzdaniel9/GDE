@@ -16,9 +16,9 @@ public class DocumentsPage {
     public static String LatestReportPath = "C:\\Users\\dany1\\Desktop\\tester.jpg";
 
     public static By IDOrPassport = By.className("gde-parent-docs-upload-button-idOrPassport");
-    public static By ProofOfAddress = By.cssSelector("gde-parent-docs-upload-button-homeAdress");
-    public static By BirthCertificate = By.cssSelector("gde-child-docs-upload-button-birthCert");
-    public static By LatestReport = By.cssSelector("gde-child-docs-upload-button-report gde");
+    public static By ProofOfAddress = By.className("gde-parent-docs-upload-button-homeAdress");
+    public static By BirthCertificate = By.className("gde-child-docs-upload-button-birthCert");
+    public static By LatestReport = By.className("gde-child-docs-upload-button-report gde");
     public static By GoBackToDashBoard = By.xpath("//button[@text='Go Back To Dashboard']");
     WebDriver driver;
 //    By ProofOfAddress = By.cssSelector("gde-parent-docs-upload-button-homeAdress");

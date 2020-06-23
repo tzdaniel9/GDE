@@ -12,11 +12,11 @@ public class NonSADocumentedParentRegistrationTest extends testBase {
 
     LearnerRegistrationPage learnerRegistrationPage;
     DocumentsPage documentsPage;
-    String phoneNumber = "0700000053";
+    String phoneNumber = "0700000061";
     String password = "Test@1234";
     String confirmPassword = "Test@1234";
     String emailAddress = "box@fusion.co.za";
-    String passportNumberParent = "zz000053";
+    String passportNumberParent = "zz000061";
     String name = "box";
     String surname = "fusion";
     String OTPNumber = "000000";
@@ -93,9 +93,9 @@ public class NonSADocumentedParentRegistrationTest extends testBase {
         DocumentsPage documentsPage = learnerRegistrationPage.continueToDocuments();
 
     documentsPage.documntsToBeUploaded(DocumentsPage.IDOrPassport,DocumentsPage.idOrPassportPath);
-    documentsPage.documntsToBeUploaded(DocumentsPage.BirthCertificate,DocumentsPage.BirthCertificatePath);
-    documentsPage.documntsToBeUploaded(DocumentsPage.ProofOfAddress,DocumentsPage.ProofOfAddressPath);
-    documentsPage.documntsToBeUploaded(DocumentsPage.LatestReport,DocumentsPage.LatestReportPath);
+//    documentsPage.documntsToBeUploaded(DocumentsPage.BirthCertificate,DocumentsPage.BirthCertificatePath);
+//    documentsPage.documntsToBeUploaded(DocumentsPage.ProofOfAddress,DocumentsPage.ProofOfAddressPath);
+//    documentsPage.documntsToBeUploaded(DocumentsPage.LatestReport,DocumentsPage.LatestReportPath);
     documentsPage.goBackToDashBoard();
 
     }

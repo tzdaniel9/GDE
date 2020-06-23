@@ -9,13 +9,13 @@ import pages.LoginPage;
 import pages.ParentRegistrationPage;
 
 public class LoginAndRegisterANonSACitizenLearnerTest extends testBase {
-    LoginPage loginPage;
+
 
     String idOrPassport = "zz000002";
     String password = "Test1234";
 
     @Test
-    public void loginAndRegister() {
+    public void loginAndRegisterLearnerTest() {
         LoginPage loginPage = homePage.LoginButton();
         loginPage.IDorPassport(idOrPassport);
         loginPage.passwOrd(password);

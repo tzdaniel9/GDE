@@ -74,6 +74,10 @@ public class LearnerRegistrationPage {
     By ContinueToDocuments = By.cssSelector(".gde-app-success-upload-documents-button");
 //    By SchoolSearchResultsCheck = By.cssSelector("gde-school-result-details-col-2");
     By SchoolSearchResultsCheck = By.xpath("//div[1]//div[2]//div[2]//div[1]/div[2]//div[2]//div[2]/label/span/input");
+    By DHAOkValidation = By.cssSelector(".gde-modal-ok-button");
+    By DHACancelValidation = By.cssSelector(".gde-modal-ok-button");
+
+
 
 
 //    String dob = "2008-01-01";
@@ -86,6 +90,8 @@ public class LearnerRegistrationPage {
         this.driver = driver;
     }
 
+    public LearnerRegistrationPage() {
+    }
 
 
     //    public boolean validateGdeLogo(){

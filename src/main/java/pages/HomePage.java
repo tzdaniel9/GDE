@@ -12,11 +12,12 @@ public class HomePage extends LearnerRegistrationPage {
     By Register = By.cssSelector("li.gde-navbar-menu-link:nth-child(10)");
     By login = By.cssSelector(".ant-btn.gde-navbar-menu-action");
     By LogOut = By.cssSelector("button.ant-btn");
+    By RegisterAnotherLearner = By.xpath("//button[@text='Register Another Learner']");
     private WebDriver driver;
     //    By GDELogo = By
 
     public HomePage(WebDriver driver) {
-        super(driver);
+
         this.driver = driver;
     }
 
@@ -35,7 +36,7 @@ public class HomePage extends LearnerRegistrationPage {
     }
 
     public LoginPage LoginButton() {
-        driver.findElement(login);
+        driver.findElement(login).click();
         return new LoginPage(driver);
     }
 
@@ -46,6 +47,11 @@ public class HomePage extends LearnerRegistrationPage {
     public ParentRegistrationPage RegisterLink(){
         driver.findElement(Register).click();
         return new ParentRegistrationPage(driver);
+    }
+
+    public LearnerRegistrationPage clickRegisterAnotherLearner(){
+        driver.findElement(RegisterAnotherLearner).click();
+        return new LearnerRegistrationPage(driver);
     }
 
 }
