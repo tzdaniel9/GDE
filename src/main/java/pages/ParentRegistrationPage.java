@@ -80,6 +80,7 @@ public class ParentRegistrationPage {
 
 
 
+
     private WebDriver driver;
 
 
@@ -104,9 +105,9 @@ public class ParentRegistrationPage {
     }
 
     public void nameOfTheNearestTownOrVillage(String nearestArea) throws InterruptedException {
-        driver.findElement(NameOfTheNearestVillage).sendKeys(nearestArea,Keys.TAB);
-        Thread.sleep(500);
-        driver.findElement(clickFirstItemListOnList).click();
+        driver.findElement(NameOfTheNearestVillage).sendKeys(nearestArea);
+//        Thread.sleep(500);
+//        driver.findElement(clickFirstItemListOnList).click();
     }
 
 

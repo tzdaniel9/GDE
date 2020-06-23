@@ -12,26 +12,26 @@ public class ParentRegistrationSACitizenTest extends testBase {
     String dateOfBirth = "2000-01-01";
     String Name = "Louw";
 
-    String phoneNumber = "0700000041";
+    String phoneNumber = "0700000042";
     String password = "Test@1234";
     String confirmPassword = "Test@1234";
     String emailAddress = "box@fusion.co.za";
-    String passportNumberParent = "zz000041";
+    String passportNumberParent = "zz000042";
     String name = "box";
     String surname = "fusion";
     String OTPNumber = "000000";
-    String homeAddress = "32 Nora Avenue";
-    String workAddress = "265 West Ave";
+    String homeAddress = "SupermanFarm";
+    String workAddress = "Mogalies Mountain Lodge & Spa";
     String passportNumberLearner = "zz100001";
     String nameLearner = "boxed";
     String surnameLearner = "fusion";
     String LanguageOfTeaching = "English";
     String houseNumber = "26";
     String Title = "Your address has been selected!";
-    String streetName = "Anmani";
-    String area = "Willow Park";
-    String mapAddress = " 62 Nora Avenue";
-    String nearestTownOrVillage = "Tswaing Meteorite Crater Museum";
+    String streetName = "Pretoria Road";
+    String area = "Pretoria Road";
+    String mapAddress = "Phianna AH";
+    String nearestTownOrVillage = "Elata Kennels";
 
 
     @Test
@@ -92,9 +92,11 @@ public class ParentRegistrationSACitizenTest extends testBase {
         parentRegistrationPage.nameOfTheNearestTownOrVillage(nearestTownOrVillage);
         Thread.sleep(1000);
         parentRegistrationPage.clickSelectYourAddressFromMap();
-
-
+        parentRegistrationPage.enterYourAddressOnMap(workAddress);
+        parentRegistrationPage.confirmMap();
         parentRegistrationPage.submitWorkAddress();
+
+
 
 
 

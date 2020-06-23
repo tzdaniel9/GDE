@@ -1,21 +1,22 @@
 package testCases;
 
 import base.testBase;
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import pages.DocumentsPage;
 import pages.LearnerRegistrationPage;
 import pages.ParentRegistrationPage;
 
+import java.awt.*;
+
 public class NonSADocumentedParentRegistrationTest extends testBase {
 
     LearnerRegistrationPage learnerRegistrationPage;
     DocumentsPage documentsPage;
-    String phoneNumber = "0700000044";
+    String phoneNumber = "0700000053";
     String password = "Test@1234";
     String confirmPassword = "Test@1234";
     String emailAddress = "box@fusion.co.za";
-    String passportNumberParent = "zz000044";
+    String passportNumberParent = "zz000053";
     String name = "box";
     String surname = "fusion";
     String OTPNumber = "000000";
@@ -28,8 +29,9 @@ public class NonSADocumentedParentRegistrationTest extends testBase {
     String LanguageOfTeaching = "English";
 
 
+
     @Test
-    public void parentRegistrationProcessNonSa() throws InterruptedException {
+    public void parentRegistrationProcessNonSa() throws InterruptedException, AWTException {
         ParentRegistrationPage parentRegistrationPage = homePage.RegisterLink();
         parentRegistrationPage.NationalityNonSouthAfricanCitizen();
         parentRegistrationPage.DocumentStatusDocumented();
@@ -68,6 +70,7 @@ public class NonSADocumentedParentRegistrationTest extends testBase {
         learnerRegistrationPage.Name(nameLearner);
         learnerRegistrationPage.Surname(surnameLearner);
         learnerRegistrationPage.GenderMale();
+        javaScriptUtil.windowFocus();
 //        learnerRegistrationPage.clickDOB();
         learnerRegistrationPage.clickDOB();
         learnerRegistrationPage.previousYears();
@@ -86,14 +89,14 @@ public class NonSADocumentedParentRegistrationTest extends testBase {
         learnerRegistrationPage.schoolSearchResults();
         learnerRegistrationPage.SubmitApplications();
         Thread.sleep(4000);
-//        learnerRegistrationPage.applyToMoreSchools();
         javaScriptUtil.windowFocus();
-        learnerRegistrationPage.continueToDocuments();
+        DocumentsPage documentsPage = learnerRegistrationPage.continueToDocuments();
 
-
-
-
-
+    documentsPage.documntsToBeUploaded(DocumentsPage.IDOrPassport,DocumentsPage.idOrPassportPath);
+    documentsPage.documntsToBeUploaded(DocumentsPage.BirthCertificate,DocumentsPage.BirthCertificatePath);
+    documentsPage.documntsToBeUploaded(DocumentsPage.ProofOfAddress,DocumentsPage.ProofOfAddressPath);
+    documentsPage.documntsToBeUploaded(DocumentsPage.LatestReport,DocumentsPage.LatestReportPath);
+    documentsPage.goBackToDashBoard();
 
     }
 }
