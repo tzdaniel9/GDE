@@ -27,6 +27,7 @@ public class NonSADocumentedParentRegistrationTest extends testBase {
     String surnameLearner = "fusion";
     String dateOfBirth = "2008-01-01";
     String LanguageOfTeaching = "English";
+    String schoolName = "La";
 
 
 
@@ -79,13 +80,13 @@ public class NonSADocumentedParentRegistrationTest extends testBase {
         learnerRegistrationPage.Grade8();
         javaScriptUtil.windowFocus();
         learnerRegistrationPage.PreferredLanguageOfTeaching(LanguageOfTeaching);
-        learnerRegistrationPage.isSchoolInGauteng();
-        learnerRegistrationPage.publicOrPrivateSchool();
+        learnerRegistrationPage.isTheInstitutionInGauteng();
+        learnerRegistrationPage.schoolIsPrivate();
         learnerRegistrationPage.applyToSchools();
         Thread.sleep(3000);
-        learnerRegistrationPage.applicationOption();
+        learnerRegistrationPage.applicationOptionFeederZone();
         javaScriptUtil.windowFocus();
-        learnerRegistrationPage.schoolName();
+        learnerRegistrationPage.institutionName(surname);
         learnerRegistrationPage.schoolSearchResults();
         learnerRegistrationPage.SubmitApplications();
         Thread.sleep(4000);

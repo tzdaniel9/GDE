@@ -10,11 +10,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 public class LearnerRegistrationPage {
-    private WebDriver driver;
-
-    String SchoolNameInitials = "L";
-
-
     LearnerRegistrationPage learnerRegistrationPage;
     By RegisterLearner = By.xpath("//button[@text='Sign In']");
     By NonSaCitizenLearner = By.id("learner-reg-nonSaCitizen");
@@ -24,7 +19,6 @@ public class LearnerRegistrationPage {
     By clickCountryOfOriginOfLearner = By.xpath("//div[contains(text(),'Select a Country of Origin')]");//ToDo
     By selectClickCountryOfOriginLearner = By.xpath("//li[contains(text(),'Afghanistan')]");//ToDo
     By IAmInTheCountryForStudy = By.id("learner-reg-studyReason");
-
     By LearnerName = By.id("learner-reg-firstName");
     By LearnerSurname = By.id("learner-reg-lastName");
     By GenderMaleLearner = By.id("learner-reg-male");
@@ -51,6 +45,8 @@ public class LearnerRegistrationPage {
     By DHAyesValidation = By.cssSelector("button.ant-btn:nth-child(2)");
     By HomeAddress = By.id("parent-reg-step2-searchInput");//ToDo
     By clickFirstItemOnListHomeAddress = By.cssSelector(".gde-auto-complete-places-suggestions:nth-child(1)");//ToDo
+    By clickFirstItemOnList = By.cssSelector(".gde-auto-complete-places-suggestions:nth-child(1)");//ToDo
+    By clickFirstItemOnTreeList = By.cssSelector("li.ant-tree-treenode-switcher-close:nth-child(1)");//ToDo
     By SubmitButtonAddress = By.id("parent-reg-step2-submitButton");
     By IntentToApplyCloseToWork = By.id("parent-reg-step2-isNotRegNearWork");
     By HomeLanguage = By.xpath("//div[contains(text(),'Select a Home Language')]");
@@ -58,39 +54,114 @@ public class LearnerRegistrationPage {
     By clickRace = By.xpath("//div[contains(text(),'Select a Race')]");
     By ethnicity = By.xpath("//li[contains(text(),'White')]");
     By grade8 = By.id("learner-reg-grade8");
+    By grade1 = By.id("learner-reg-grade1");
     By preferedLanguageOfTeaching = By.xpath("//div[contains(text(),'Select Preferred Language of Teaching')]");
     By languageOfTeaching = By.cssSelector(".learner-reg-preferredLanguage-1");
-    By IsSchoolInGauteng = By.id("learner-reg-isSchoolGauteng");
-    By IsSchoolPublicOrPrivate = By.id("learner-reg-isSchoolPublic");
+    By IsInstitutionInGauteng = By.id("learner-reg-isSchoolGauteng");
+    By SchoolIsPrivate = By.id("learner-reg-isSchoolPublic");
+    By SchoolIsPublic = By.id("learner-reg-isNotSchoolPublic");
     By ApplyToSchools = By.id("learner-reg-submitButton");
     By ApplicationOption = By.xpath("//div[contains(text(),'Home Address Within Schools Feeder Zone')]");
-    By ApplicationOptionSelect = By.xpath("//li[contains(text(),'Home Address Within Schools Feeder Zone')]");
-    By SchoolName = By.id("learner-application-searchSchoolName");
+    By HomeFeederZoneApplicationOption = By.xpath("//li[contains(text(),'Home Address Within Schools Feeder Zone')]");
+    By SiblingOrPreviousSchoolOption = By.xpath("//li[contains(text(),'Sibling/Previous School')]");
+    By WorkAddressWithinSchoolsFeederZone = By.xpath("//li[contains(text(),'Work Address Within Schools Feeder Zone')]");
+    By HomeAddressWithin30km = By.xpath("//li[contains(text(),'Home Address Within 30km')]");
+    By SchoolsOfSpecializationOrFocusSchools = By.xpath("//li[contains(text(),'Schools Of Specialization/Focus Schools')]");
+    By HomeAddressBeyond30km = By.xpath("//li[contains(text(),'Home Address Beyond 30km')]");
+    By SchoolName = By.id("learner-reg-institutionName");
     By SchoolSearchResultsTitle = By.xpath("//div[contains(text(),'School Search Result(s)')]"); //get text of search results
     By selectSchoolsToApply = By.cssSelector("ant-checkbox-input");
     By monthOfBirth = By.cssSelector(".ant-calendar-body td");
     By submitApplications = By.id("learner-application-submitApplications");
     By ApplyToMoreSchools = By.xpath("//span[contains(text(),'Apply to More Schools')]");
     By ContinueToDocuments = By.cssSelector(".gde-app-success-upload-documents-button");
-//    By SchoolSearchResultsCheck = By.cssSelector("gde-school-result-details-col-2");
+    //    By SchoolSearchResultsCheck = By.cssSelector("gde-school-result-details-col-2");
     By SchoolSearchResultsCheck = By.xpath("//div[1]//div[2]//div[2]//div[1]/div[2]//div[2]//div[2]/label/span/input");
     By DHAOkValidation = By.cssSelector(".gde-modal-ok-button");
     By DHACancelValidation = By.cssSelector(".gde-modal-ok-button");
+    By AsylumSeeker = By.id("learner-reg-asylumSeekerReason");
+    By Refugee = By.id("learner-reg-refugeeReason");
+    By RefugeNumber = By.id("learner-reg-refugeeNumber");
+    By IsLeanerInGradeRorAnEarlyChildhoodDevelopmentProgram = By.id("learner-reg-isGradeR");
+    By SuburbOrTownship = By.cssSelector("[placeholder='Suburb/Township']");
+    By SiblingName = By.id("learner-application-siblingName");
+    By SiblingSurname = By.id("learner-application-siblingSurname");
+    By SiblingGrade = By.id("learner-application-siblingGrade");
+    By SiblingSchool = By.id("learner-application-siblingSchool");
+    By LearnerApplicationApply = By.id("learner-application-applyButton");
+    By ApplyBtnOnLearnerApplication = By.id("learner-application-applyButton");
+    By ApplyToMoreSchoolsButton = By.cssSelector("gde-app-success-apply-to-more-schools-button");
 
 
+    private WebDriver driver;
 
-
-//    String dob = "2008-01-01";
-
-
-
-
-
-    public LearnerRegistrationPage(WebDriver driver){
+    public LearnerRegistrationPage(WebDriver driver) {
         this.driver = driver;
     }
 
     public LearnerRegistrationPage() {
+    }
+
+    public LearnerRegistrationPage applyToMoreSchoolsBtn(){
+        driver.findElement(ApplyToMoreSchoolsButton).click();
+        return new LearnerRegistrationPage(driver);
+    }
+
+
+    public void siblingName(String name){
+        driver.findElement(SiblingName).sendKeys(name);
+    }
+
+    public void applyBtnOnLearnerApplication(){
+        driver.findElement(ApplyBtnOnLearnerApplication).click();
+    }
+
+    public void siblingSurname (String surname){
+        driver.findElement(SiblingSurname).sendKeys(surname);
+    }
+
+    public void siblingGrade(String grade){
+        driver.findElement(SiblingGrade).sendKeys(grade);
+    }
+
+    public void siblingSchool(String school) throws InterruptedException {
+        driver.findElement(SiblingSchool).sendKeys(school);
+        Thread.sleep(500);
+        driver.findElement(clickFirstItemOnTreeList).click();
+    }
+
+    public void learnerApplicationApply(){
+        driver.findElement(LearnerApplicationApply).click();
+    }
+
+    public void suburbOrTownship(String area) throws InterruptedException {
+        driver.findElement(SuburbOrTownship).sendKeys(area);
+        Thread.sleep(500);
+        driver.findElement(clickFirstItemOnList).click();
+    }
+
+    public void isLeanerInGradeRorAnEarlyChildhoodDevelopmentProgram() {
+        driver.findElement(IsLeanerInGradeRorAnEarlyChildhoodDevelopmentProgram).click();
+    }
+
+    public void dhaOkValidation() {
+        driver.findElement(DHAOkValidation);
+    }
+
+    public void dhaCancelValidation() {
+        driver.findElement(DHACancelValidation).click();
+    }
+
+    public void asylumSeeker() {
+        driver.findElement(AsylumSeeker).click();
+    }
+
+    public void refugee() {
+        driver.findElement(Refugee).click();
+    }
+
+    public void refugeeNumber(String refugeeNum) {
+        driver.findElement(RefugeNumber).sendKeys(refugeeNum);
     }
 
 
@@ -102,13 +173,12 @@ public class LearnerRegistrationPage {
 //        driver.findElement(applicationOption();)
 //    }
 
-
-    public DocumentsPage continueToDocuments(){
+    public DocumentsPage continueToDocuments() {
         driver.findElement(ContinueToDocuments).click();
         return new DocumentsPage(driver);
     }
 
-    public void schoolSearchResults(){
+    public void schoolSearchResults() {
 
         driver.findElement(SchoolSearchResultsCheck).click();
 //        WebElement element = driver.findElement(SchoolSearchResultsCheck);
@@ -120,55 +190,78 @@ public class LearnerRegistrationPage {
 //        }
     }
 
-    public void applyToMoreSchools(){
+    public void applyToMoreSchools() {
         driver.findElement(ApplyToMoreSchools).click();
     }
 
 
-    public void previousYears(){
+    public void previousYears() {
         WebElement element = driver.findElement(clickPreviousYears);
-        for (int i = 0; i < 11;i++){
+        for (int i = 0; i < 11; i++) {
             element.click();
         }
         driver.findElement(monthOfBirth).click();
     }
 
-    public void SubmitApplications (){
+    public void SubmitApplications() {
         driver.findElement(submitApplications).click();
-        driver.manage().timeouts().implicitlyWait(10000,TimeUnit.MILLISECONDS);
+        driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
     }
 
-    public void inTheCountryForStudy(){
+    public void inTheCountryForStudy() {
         driver.findElement(IAmInTheCountryForStudy).click();
     }
 
-    public void selectSchoolsToApplyTo(){
+    public void selectSchoolsToApplyTo() {
         driver.findElement(selectSchoolsToApply).click();
     }
 
-    public void schoolName(){
-        driver.findElement(SchoolName).sendKeys(SchoolNameInitials);
+    public void institutionName(String institutionName) {
+        driver.findElement(SchoolName).sendKeys(institutionName);
     }
 
-    public void applicationOption(){
+    public void applicationOptionFeederZone() {
         driver.findElement(ApplicationOption).click();
-        driver.findElement(ApplicationOptionSelect).click();
+        driver.findElement(HomeFeederZoneApplicationOption).click();
+    }
 
+    public void siblingOrPreviousSchoolApplicationOption() {
+        driver.findElement(ApplicationOption).click();
+        driver.findElement(SiblingOrPreviousSchoolOption).click();//SiblingOrPreviousSchoolOption
+    }
+
+    public void workAddressWithinSchoolsFeederZone() {
+        driver.findElement(ApplicationOption).click();
+        driver.findElement(WorkAddressWithinSchoolsFeederZone).click();//SiblingOrPreviousSchoolOption
+    }
+
+    public void schoolsOfSpecializationOrFocusSchools() {
+        driver.findElement(ApplicationOption).click();
+        driver.findElement(SchoolsOfSpecializationOrFocusSchools).click();//SiblingOrPreviousSchoolOption
+    }
+
+    public void homeAddressWithin30km() {
+        driver.findElement(ApplicationOption).click();
+        driver.findElement(HomeAddressWithin30km).click();//SiblingOrPreviousSchoolOption
     }
 
 
-    public void applyToSchools(){
+    public void applyToSchools() {
         driver.findElement(ApplyToSchools).click();
         driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
     }
 
-    public void publicOrPrivateSchool(){
-        driver.findElement(IsSchoolPublicOrPrivate).click();
-    }
-    public void isSchoolInGauteng(){
-        driver.findElement(IsSchoolInGauteng).click();
+    public void schoolIsPrivate() {
+        driver.findElement(SchoolIsPrivate).click();
     }
 
+    public void schoolIsPublic() {
+        driver.findElement(SchoolIsPublic).click();
+    }
+
+    public void isTheInstitutionInGauteng() {
+        driver.findElement(IsInstitutionInGauteng).click();
+    }
 
 
     public void PreferredLanguageOfTeaching(String teachingLanguage) throws InterruptedException {
@@ -177,21 +270,25 @@ public class LearnerRegistrationPage {
         driver.findElement(languageOfTeaching).click();
     }
 
-    public void Grade8(){
+    public void Grade8() {
         driver.findElement(grade8).click();
     }
 
-    public void Race(){
+    public void Grade1() {
+        driver.findElement(grade1).click();
+    }
+
+    public void Race() {
         driver.findElement(clickRace).click();
         driver.findElement(ethnicity).click();
     }
 
-    public  void homeLanguage(){
+    public void homeLanguage() {
         driver.findElement(HomeLanguage).click();
         driver.findElement(clickHomeLanguage).click();
     }
 
-    public void intentToApplyCloseToWork(){
+    public void intentToApplyCloseToWork() {
         driver.findElement(IntentToApplyCloseToWork).click();
     }
 
@@ -201,26 +298,25 @@ public class LearnerRegistrationPage {
         driver.findElement(clickFirstItemOnListHomeAddress).click();
     }
 
-    public void submitAddress(){
+    public void submitAddress() {
         driver.findElement(SubmitButtonAddress).click();
     }
 
-    public LearnerRegistrationPage submitWorkAddress(){
+    public LearnerRegistrationPage submitWorkAddress() {
         driver.findElement(SubmitButtonAddress).click();
         return new LearnerRegistrationPage(driver);
     }
 
 
-
-    public void unDocumented(){
+    public void unDocumented() {
         driver.findElement(DocumentStatusUndocumented).click();
     }
 
-    public void insertYourOTP(String OTPpin){
+    public void insertYourOTP(String OTPpin) {
         driver.findElement(PleaseConfirmYourOTP).sendKeys(OTPpin);
     }
 
-    public void okButtonOTP(){
+    public void okButtonOTP() {
         driver.findElement(OkButtonOnOTP).click();
     }
 
@@ -230,19 +326,19 @@ public class LearnerRegistrationPage {
 
     public List<String> getSelectedOptions() {
         List<WebElement> selectedElements = findDropDownElement().getAllSelectedOptions();
-        return selectedElements.stream().map(e->e.getText()).collect(Collectors.toList());
+        return selectedElements.stream().map(e -> e.getText()).collect(Collectors.toList());
     }
 
     private Select findDropDownElement() {
         return new Select(driver.findElement(countryOfOrigin));
     }
 
-    public  void CountryOfOrigin(){
+    public void CountryOfOrigin() {
         driver.findElement(clickCountryOfOriginOfLearner).click();
         driver.findElement(selectClickCountryOfOriginLearner).click();
     }
 
-    public void nextButton(){
+    public void nextButton() {
         driver.findElement(NextStep).click();
     }
 
@@ -254,7 +350,7 @@ public class LearnerRegistrationPage {
 //        XValidationDHA.click();
 //    }
 
-    public void yesBtnValidationDHA(){
+    public void yesBtnValidationDHA() {
         driver.findElement(DHAyesValidation).click();
     }
 
@@ -265,7 +361,7 @@ public class LearnerRegistrationPage {
         driver.findElement(SaCitizen).click();
     }
 
-    public void idNumber(String idNumber){
+    public void idNumber(String idNumber) {
         driver.findElement(IDNumber).sendKeys(idNumber);
     }
 
@@ -296,7 +392,7 @@ public class LearnerRegistrationPage {
 
     }
 
-    public void clickDOB(){
+    public void clickDOB() {
         driver.findElement(clickDateOfBirthLearner).click();
     }
 
@@ -334,7 +430,6 @@ public class LearnerRegistrationPage {
     public void NationalityNonSouthAfricanCitizen() {
         driver.findElement(NonSaCitizenLearner).click();
     }
-
 
 
 //    public void DocumentStatusUndocumented() {
@@ -408,14 +503,7 @@ public class LearnerRegistrationPage {
     }
 
 
-
-
-
-
-
-
-
-    public void registerLearner(){
+    public void registerLearner() {
         driver.findElement(RegisterLearner).click();
     }
 

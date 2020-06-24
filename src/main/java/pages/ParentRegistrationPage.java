@@ -341,6 +341,8 @@ public class ParentRegistrationPage {
         driver.findElement(NonSaCitizen).click();
     }
 
+
+
        public By getNonSaCitizen(){
         return this.NonSaCitizen;
        }
