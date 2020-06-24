@@ -10,6 +10,8 @@ import resources.ElementUtils;
 import resources.JavaScriptUtil;
 import testCases.ParentRegistrationSACitizenTest;
 
+import java.util.concurrent.TimeUnit;
+
 public class testBase {
     private WebDriver driver;
     protected HomePage homePage;
@@ -41,6 +43,7 @@ public class testBase {
 
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
     }
 
