@@ -13,6 +13,7 @@ public class NonSADocumentedParentRegistrationTest extends testBase {
 
     LearnerRegistrationPage learnerRegistrationPage;
     DocumentsPage documentsPage;
+
     String phoneNumber = "0700000064";
     String password = "Test@1234";
     String confirmPassword = "Test@1234";
