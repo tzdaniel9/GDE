@@ -1,6 +1,7 @@
 package testCases;
 
 import base.testBase;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.DocumentsPage;
 import pages.LearnerRegistrationPage;
@@ -12,11 +13,11 @@ public class NonSADocumentedParentRegistrationTest extends testBase {
 
     LearnerRegistrationPage learnerRegistrationPage;
     DocumentsPage documentsPage;
-    String phoneNumber = "0700000061";
+    String phoneNumber = "0700000064";
     String password = "Test@1234";
     String confirmPassword = "Test@1234";
     String emailAddress = "box@fusion.co.za";
-    String passportNumberParent = "zz000061";
+    String passportNumberParent = "zz000064";
     String name = "box";
     String surname = "fusion";
     String OTPNumber = "000000";
@@ -28,7 +29,6 @@ public class NonSADocumentedParentRegistrationTest extends testBase {
     String dateOfBirth = "2008-01-01";
     String LanguageOfTeaching = "English";
     String schoolName = "La";
-
 
 
     @Test
@@ -48,8 +48,8 @@ public class NonSADocumentedParentRegistrationTest extends testBase {
         parentRegistrationPage.ConfirmPassword(confirmPassword);
         parentRegistrationPage.nextButton();
         Thread.sleep(2000);
-        parentRegistrationPage.insertYourOTP(OTPNumber);
-        parentRegistrationPage.okButtonOTP();
+//        parentRegistrationPage.insertYourOTP(OTPNumber);
+//        parentRegistrationPage.okButtonOTP();
         javaScriptUtil.windowFocus();
         parentRegistrationPage.AcceptTermsAndConditionsCheckBox();
         javaScriptUtil.windowFocus();
@@ -86,18 +86,25 @@ public class NonSADocumentedParentRegistrationTest extends testBase {
         Thread.sleep(3000);
         learnerRegistrationPage.applicationOptionFeederZone();
         javaScriptUtil.windowFocus();
-        learnerRegistrationPage.institutionName(surname);
+        learnerRegistrationPage.institutionName(schoolName);
         learnerRegistrationPage.schoolSearchResults();
         learnerRegistrationPage.SubmitApplications();
         Thread.sleep(4000);
         javaScriptUtil.windowFocus();
         DocumentsPage documentsPage = learnerRegistrationPage.continueToDocuments();
 
-    documentsPage.documntsToBeUploaded(DocumentsPage.IDOrPassport,DocumentsPage.idOrPassportPath);
-//    documentsPage.documntsToBeUploaded(DocumentsPage.BirthCertificate,DocumentsPage.BirthCertificatePath);
-//    documentsPage.documntsToBeUploaded(DocumentsPage.ProofOfAddress,DocumentsPage.ProofOfAddressPath);
-//    documentsPage.documntsToBeUploaded(DocumentsPage.LatestReport,DocumentsPage.LatestReportPath);
-    documentsPage.goBackToDashBoard();
+        documentsPage.documntsToBeUploaded(DocumentsPage.IDOrPassport, DocumentsPage.idOrPassportPath);
+        Thread.sleep(10000);
+        documentsPage.documntsToBeUploaded(DocumentsPage.BirthCertificate, DocumentsPage.BirthCertificatePath);
+        Thread.sleep(10000);
+
+        documentsPage.documntsToBeUploaded(DocumentsPage.ProofOfAddress, DocumentsPage.ProofOfAddressPath);
+        Thread.sleep(10000);
+
+        documentsPage.documntsToBeUploaded(DocumentsPage.LatestReport, DocumentsPage.LatestReportPath);
+        Thread.sleep(10000);
+
+        documentsPage.goBackToDashBoard();
 
     }
 }

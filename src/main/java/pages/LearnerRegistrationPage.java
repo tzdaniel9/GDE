@@ -68,7 +68,8 @@ public class LearnerRegistrationPage {
     By HomeAddressWithin30km = By.xpath("//li[contains(text(),'Home Address Within 30km')]");
     By SchoolsOfSpecializationOrFocusSchools = By.xpath("//li[contains(text(),'Schools Of Specialization/Focus Schools')]");
     By HomeAddressBeyond30km = By.xpath("//li[contains(text(),'Home Address Beyond 30km')]");
-    By SchoolName = By.id("learner-reg-institutionName");
+    By SchoolName = By.id("learner-application-searchSchoolName");
+//    By SchoolName = By.id("learner-reg-institutionName");
     By SchoolSearchResultsTitle = By.xpath("//div[contains(text(),'School Search Result(s)')]"); //get text of search results
     By selectSchoolsToApply = By.cssSelector("ant-checkbox-input");
     By monthOfBirth = By.cssSelector(".ant-calendar-body td");
@@ -76,7 +77,7 @@ public class LearnerRegistrationPage {
     By ApplyToMoreSchools = By.xpath("//span[contains(text(),'Apply to More Schools')]");
     By ContinueToDocuments = By.cssSelector(".gde-app-success-upload-documents-button");
     //    By SchoolSearchResultsCheck = By.cssSelector("gde-school-result-details-col-2");
-    By SchoolSearchResultsCheck = By.xpath("//div[1]//div[2]//div[2]//div[1]/div[2]//div[2]//div[2]/label/span/input");
+    By SchoolSearchResultsCheck = By.cssSelector(".gde-school-results .gde-school-result:nth-child(1) .ant-checkbox-input");
     By DHAOkValidation = By.cssSelector(".gde-modal-ok-button");
     By DHACancelValidation = By.cssSelector(".gde-modal-ok-button");
     By AsylumSeeker = By.id("learner-reg-asylumSeekerReason");
@@ -91,6 +92,9 @@ public class LearnerRegistrationPage {
     By LearnerApplicationApply = By.id("learner-application-applyButton");
     By ApplyBtnOnLearnerApplication = By.id("learner-application-applyButton");
     By ApplyToMoreSchoolsButton = By.cssSelector("gde-app-success-apply-to-more-schools-button");
+//    By CurrentSchool = By //ToDo
+    //.gde-school-results .gde-school-result:nth-child(1) .ant-checkbox-input
+    By YouCanOnlyApplyTo1SchoolsAtATimeForThisApplicationOption = By.cssSelector(".ant-message > span > :nth-child(1)");
 
 
     private WebDriver driver;
@@ -102,25 +106,41 @@ public class LearnerRegistrationPage {
     public LearnerRegistrationPage() {
     }
 
-    public LearnerRegistrationPage applyToMoreSchoolsBtn(){
+    public Boolean youCanOnlyApplyTo1SchoolsAtATimeForThisApplicationOption(){
+        if (!driver.findElement(YouCanOnlyApplyTo1SchoolsAtATimeForThisApplicationOption).isDisplayed()){
+            return false;
+        }else {
+            return true;
+        }
+
+    }
+
+    public void currentSchool(String schoolCurrent) throws InterruptedException {
+//        driver.findElement(CurrentSchool).sendKeys(schoolCurrent); //ToDo
+        Thread.sleep(500);
+        driver.findElement(clickFirstItemOnList).click();
+    }
+
+
+    public LearnerRegistrationPage applyToMoreSchoolsBtn() {
         driver.findElement(ApplyToMoreSchoolsButton).click();
         return new LearnerRegistrationPage(driver);
     }
 
 
-    public void siblingName(String name){
+    public void siblingName(String name) {
         driver.findElement(SiblingName).sendKeys(name);
     }
 
-    public void applyBtnOnLearnerApplication(){
+    public void applyBtnOnLearnerApplication() {
         driver.findElement(ApplyBtnOnLearnerApplication).click();
     }
 
-    public void siblingSurname (String surname){
+    public void siblingSurname(String surname) {
         driver.findElement(SiblingSurname).sendKeys(surname);
     }
 
-    public void siblingGrade(String grade){
+    public void siblingGrade(String grade) {
         driver.findElement(SiblingGrade).sendKeys(grade);
     }
 
@@ -130,7 +150,7 @@ public class LearnerRegistrationPage {
         driver.findElement(clickFirstItemOnTreeList).click();
     }
 
-    public void learnerApplicationApply(){
+    public void learnerApplicationApply() {
         driver.findElement(LearnerApplicationApply).click();
     }
 

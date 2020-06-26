@@ -42,7 +42,7 @@ public class ParentRegistrationPage {
 //    By OkButtonOnOTP = By.xpath("//span[contains(text(),'OK')]");
     By IDNumber = By.id("parent-reg-step1-citizenIdNumber");
     By DHAyesValidation = By.cssSelector("button.ant-btn:nth-child(2)");
-    By HomeAddress = By.id("parent-reg-step2-searchInput");//ToDo
+    By HomeAddress = By.id("parent-reg-step2-searchInput");//ToDo parent-reg-step2-searchInput
     By clickFirstItemOnListHomeAddress = By.cssSelector(".gde-auto-complete-places-suggestions:nth-child(1)");//ToDo
     By SubmitButtonAddress = By.id("parent-reg-step2-submitButton");
     By NonIntentToApplyCloseToWork = By.id("parent-reg-step2-isNotRegNearWork");

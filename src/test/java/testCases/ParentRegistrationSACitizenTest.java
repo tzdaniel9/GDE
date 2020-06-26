@@ -58,8 +58,8 @@ public class ParentRegistrationSACitizenTest extends testBase {
         parentRegistrationPage.NextStepButton();
         Thread.sleep(1000);
         parentRegistrationPage.insertYourOTP(OTPNumber);
-        Thread.sleep(500);
-        parentRegistrationPage.okButtonOTP();
+//        Thread.sleep(500);
+//        parentRegistrationPage.okButtonOTP();
         javaScriptUtil.windowFocus();
         parentRegistrationPage.AcceptTermsAndConditionsCheckBox();
         javaScriptUtil.windowFocus();

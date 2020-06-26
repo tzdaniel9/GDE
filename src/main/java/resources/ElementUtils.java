@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
+import org.testng.Assert;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
@@ -402,6 +403,12 @@ public class ElementUtils {
                 exp.printStackTrace();
             }
         }
+    }
+
+    public void title(String title){
+        String Title = driver.getTitle();
+        System.out.println(Title);
+        Assert.assertEquals(Title,title);
     }
 
 

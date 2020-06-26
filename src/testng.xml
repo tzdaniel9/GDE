@@ -1,0 +1,32 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" verbose="1" >
+    <test name="DHA Validation" >
+        <classes>
+            <class name="testCases.ParentRegistrationWithValidSAIDTest" />
+        </classes>
+    </test>
+
+    <test name="Regression">
+
+<!--        <parameter name="phoneNumber" value="0700000064"></parameter>-->
+<!--        <parameter name="password" value="Test@1234"></parameter>-->
+<!--        <parameter name="confirmPassword" value="Test@1234"></parameter>-->
+<!--        <parameter name="emailAddress" value="box@fusion.co.za"></parameter>-->
+<!--        <parameter name="passportNumberParent" value="zz000064"></parameter>-->
+<!--        <parameter name="name" value="box"></parameter>-->
+<!--        <parameter name="surname" value="fusion"></parameter>-->
+<!--        <parameter name="OTPNumber" value="000000"></parameter>-->
+<!--        <parameter name="homeAddress" value="32 Nora Avenue"></parameter>-->
+<!--        <parameter name="workAddress" value="265 West Ave"></parameter>-->
+<!--        <parameter name="passportNumberLearner" value="zz100001"></parameter>-->
+<!--        <parameter name="nameLearner" value="boxed"></parameter>-->
+<!--        <parameter name="surnameLearner" value="boxed"></parameter>-->
+<!--        <parameter name="LanguageOfTeaching" value="English"></parameter>-->
+<!--        <parameter name="schoolName" value="La"></parameter>-->
+
+        <classes>
+            <class name="testCases.NonSADocumentedParentRegistrationTest"/>
+        </classes>
+    </test>
+</suite>
