@@ -11,7 +11,8 @@ public class saCitizenLearnerTest extends testBase {
 
     String TrueId = "0506135225080";
     String FakeId = "9203044800085";
-    String idOrPassword= "zz000062";
+//    String idOrPassword= "zz000062";
+    String idOrPassword= "nm0";
     String password = "Test@1234";
     String refugeeNum = "ref0000001";
     String name = "mary";
@@ -35,10 +36,11 @@ public class saCitizenLearnerTest extends testBase {
         loginPage.IDorPassport(idOrPassword);
         loginPage.passwOrd(password);
         loginPage.clickSignIn();
-        title = driver.getTitle();
-        Assert.assertEquals(title,"","title does not match"); //ToDo
+//        title = driver.getTitle();
+//        Assert.assertEquals(title,"","title does not match"); //ToDo
         Thread.sleep(2000);
         LearnerRegistrationPage learnerRegistrationPage = homePage.clickRegisterAnotherLearner();
+        Thread.sleep(2000);
         learnerRegistrationPage.SouthAfricanCitizen();
         learnerRegistrationPage.DocumentStatusDocumented();
         learnerRegistrationPage.idNumber(FakeId);

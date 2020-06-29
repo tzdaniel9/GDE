@@ -13,41 +13,57 @@ import java.util.stream.Collectors;
 public class ParentRegistrationPage {
 
 
-    By NonSaCitizen = By.id("parent-reg-step1-noSaCitizen");
+//    By NonSaCitizen = By.id("parent-reg-step1-noSaCitizen");
+    By NonSaCitizen = By.xpath("//span[contains(text(),'Non South African Citizen')]");
     By SaCitizen = By.id("parent-reg-step1-saCitizen");
-    By DocumentStatusUndocumented = By.id("parent-reg-step1-notDocumented");
-    By DocumentStatusDocumented = By.id("parent-reg-step1-documented");
+    By DocumentStatusUndocumented = By.cssSelector("parent-reg-step1-notDocumented");
+//    By DocumentStatusDocumented = By.id("parent-reg-step1-documented");
+    By DocumentStatusDocumented = By.xpath("//span[contains(text(),'Documented')]");
     By clickCountryOfOrigin = By.cssSelector(".ant-select-selection__placeholder");//ToDo
     By selectClickCountryOfOrigin = By.cssSelector("li.ant-select-dropdown-menu-item:nth-child(1)");//ToDo
     By Name = By.name("firstName");
     By Surname = By.name("lastName");
-    By GenderMale = By.id("parent-reg-step1-male");
+//    By GenderMale = By.id("parent-reg-step1-male");
+    By GenderMale = By.xpath("//span[contains(text(),'Male')]");
     By emailAddress = By.name("emailAddress");
-    By CellphoneNumber = By.id("parent-reg-step1-mobileNumber");
-    By GenderFemale = By.id("parent-reg-step1-female");
-    By Password = By.xpath("//input[@placeholder='Password']");
-    By ConfirmPassword = By.xpath("//input[@placeholder='Repeat password']");
+    By CellphoneNumber = By.name("mobileNumber");
+//    By CellphoneNumber = By.id("parent-reg-step1-mobileNumber");
+//    By GenderFemale = By.id("parent-reg-step1-female");
+    By GenderFemale = By.xpath("//span[contains(text(),'Female')]");
+    By Password = By.cssSelector("[placeholder='Password']");
+//    By Password = By.xpath("//input[@placeholder='Password']");
+    By ConfirmPassword = By.cssSelector("[placeholder='Repeat password']");
+//    By ConfirmPassword = By.xpath("//input[@placeholder='Repeat password']");
     By NextStepButton = By.id("parent-reg-step1-submitButton");
-    By AcceptTermsAndConditionsCheckBox = By.xpath("//input[@type='checkbox']");
+    By AcceptTermsAndConditionsCheckBox = By.cssSelector("[type='checkbox']");
+//    By AcceptTermsAndConditionsCheckBox = By.xpath("//input[@type='checkbox']");
     By ButtonOK = By.cssSelector(".gde-terms-modal .gde-modal-ok-button");
     By EnterYourOTP = By.id("rcDialogTitle0");
     By confirmOTPButton = By.cssSelector("button.ant-btn:nth-child(2)");
-    By PassportNumber = By.id("parent-reg-step1-passportNumber");
+//    By PassportNumber = By.id("parent-reg-step1-passportNumber");
+    By PassportNumber = By.name("passportNumber");
     By DateOfBirth = By.className("ant-calendar-picker-input ant-input");
-    By workPermitImmigrationStatus = By.id("parent-reg-step1-workPermit");
+//    By workPermitImmigrationStatus = By.id("parent-reg-step1-workPermit");
+    By workPermitImmigrationStatus = By.xpath("//input[@value='Work Permit']");
     By countryOfOrigin = By.cssSelector(".ant-select-selection__placeholder");
-    By NextStep = By.id("parent-reg-step1-submitButton");
+    By NextStep = By.cssSelector("[text='Next Step']");
+//    By NextStep = By.id("parent-reg-step1-submitButton");
     By PleaseConfirmYourOTP = By.xpath("//input[@placeholder='Enter Your OTP Number']");
     By OkButtonOnOTP = By.cssSelector(".reg-otp-modal .gde-modal-ok-button");
 //    By OkButtonOnOTP = By.xpath("//span[contains(text(),'OK')]");
     By IDNumber = By.id("parent-reg-step1-citizenIdNumber");
     By DHAyesValidation = By.cssSelector("button.ant-btn:nth-child(2)");
-    By HomeAddress = By.id("parent-reg-step2-searchInput");//ToDo parent-reg-step2-searchInput
+    By HomeAddress = By.cssSelector("input.ant-input:nth-child(1)");//ToDo Thumbani
+//    By HomeAddress = By.id("parent-reg-step2-searchInput");//ToDo parent-reg-step2-searchInput
     By clickFirstItemOnListHomeAddress = By.cssSelector(".gde-auto-complete-places-suggestions:nth-child(1)");//ToDo
-    By SubmitButtonAddress = By.id("parent-reg-step2-submitButton");
-    By NonIntentToApplyCloseToWork = By.id("parent-reg-step2-isNotRegNearWork");
+    By SubmitButtonAddress = By.cssSelector("[text='Submit']");
+//    By SubmitButtonAddress = By.id("parent-reg-step2-submitButton");
+    By SubmitWorkAddress = By.cssSelector(".undefined > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > span:nth-child(1) > button");
+    By NonIntentToApplyCloseToWork = By.xpath("//span[contains(text(),'No')]");
+//    By NonIntentToApplyCloseToWork = By.id("parent-reg-step2-isNotRegNearWork");
     By AsylumSeekerImmigrationStatus = By.id("parent-reg-step1-asylumSeeker");
-    By IntentToApplyToWork = By.id("parent-reg-step2-isRegNearWork");
+    By IntentToApplyToWork = By.xpath("//span[contains(text(),'Yes')]");
+//    By IntentToApplyToWork = By.id("parent-reg-step2-isRegNearWork");
     By AsylumSeekerNumber = By.id("parent-reg-step1-asylumSeekerNumber");
     By searchForWorkAddress = By.id("parent-reg-step2-searchInput");
     By clickFirstItemListOnWorkAddressList = By.cssSelector(".gde-auto-complete-places-suggestions:nth-child(1)");
@@ -218,7 +234,7 @@ public class ParentRegistrationPage {
     }
 
     public LearnerRegistrationPage submitWorkAddress() {
-        driver.findElement(SubmitButtonAddress).click();
+        driver.findElement(SubmitWorkAddress).click();
         return new LearnerRegistrationPage(driver);
     }
 

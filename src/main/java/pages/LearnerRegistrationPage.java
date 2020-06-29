@@ -12,19 +12,28 @@ import java.util.stream.Collectors;
 public class LearnerRegistrationPage {
     LearnerRegistrationPage learnerRegistrationPage;
     By RegisterLearner = By.xpath("//button[@text='Sign In']");
-    By NonSaCitizenLearner = By.id("learner-reg-nonSaCitizen");
-    By SaCitizen = By.id("parent-reg-step1-saCitizen");
-    By DocumentStatusUndocumented = By.id("parent-reg-step1-notDocumented");
-    By LearnerDocumentStatusDocumented = By.id("learner-reg-documented");
+    By NonSaCitizenLearner = By.xpath("//span[contains(text(),'Non South African Citizen')]");
+//    By NonSaCitizenLearner = By.id("learner-reg-nonSaCitizen");
+    By SaCitizen = By.xpath("//span[starts-with(text(),'South African Citizen')]");
+//    By SaCitizen = By.id("parent-reg-step1-saCitizen");
+    By DocumentStatusUndocumented = By.xpath("//span[contains(text(),'Undocumented')]");
+//    By DocumentStatusUndocumented = By.id("parent-reg-step1-notDocumented");
+    By LearnerDocumentStatusDocumented = By.xpath("//span[contains(text(),'Documented')]");
+//    By LearnerDocumentStatusDocumented = By.id("learner-reg-documented");
     By clickCountryOfOriginOfLearner = By.xpath("//div[contains(text(),'Select a Country of Origin')]");//ToDo
     By selectClickCountryOfOriginLearner = By.xpath("//li[contains(text(),'Afghanistan')]");//ToDo
-    By IAmInTheCountryForStudy = By.id("learner-reg-studyReason");
-    By LearnerName = By.id("learner-reg-firstName");
-    By LearnerSurname = By.id("learner-reg-lastName");
-    By GenderMaleLearner = By.id("learner-reg-male");
+    By IAmInTheCountryForStudy = By.xpath("//span[contains(text(),'Study')]");
+//    By IAmInTheCountryForStudy = By.id("learner-reg-studyReason");
+    By LearnerName = By.name("firstName");
+//    By LearnerName = By.id("learner-reg-firstName");
+    By LearnerSurname = By.name("lastName");
+//    By LearnerSurname = By.id("learner-reg-lastName");
+    By GenderMaleLearner = By.xpath("//span[contains(text(),'Male')]");
+//    By GenderMaleLearner = By.id("learner-reg-male");
     By emailAddress = By.name("emailAddress");
     By CellphoneNumber = By.id("parent-reg-step1-mobileNumber");
-    By GenderFemale = By.id("parent-reg-step1-female");
+    By GenderFemale = By.xpath("//span[contains(text(),'Female')]");
+//    By GenderFemale = By.id("parent-reg-step1-female");
     By Password = By.xpath("//input[@placeholder='Password']");
     By ConfirmPassword = By.xpath("//input[@placeholder='Repeat password']");
     By NextStepButton = By.id("parent-reg-step1-submitButton");
@@ -32,8 +41,10 @@ public class LearnerRegistrationPage {
     By ButtonOK = By.cssSelector(".gde-terms-modal .gde-modal-ok-button");
     By EnterYourOTP = By.id("rcDialogTitle0");
     By confirmOTPButton = By.cssSelector("button.ant-btn:nth-child(2)");
-    By PassportNumberLearner = By.id("learner-reg-passportNumber");
-    By clickDateOfBirthLearner = By.id("learner-reg-dateOfBirth");
+    By PassportNumberLearner = By.name("passportNumber");
+//    By PassportNumberLearner = By.id("learner-reg-passportNumber");
+//    By clickDateOfBirthLearner = By.id("learner-reg-dateOfBirth");
+    By clickDateOfBirthLearner = By.cssSelector("[class='ant-calendar-picker-input ant-input']");
     By clickPreviousYears = By.cssSelector(".ant-calendar-header a[role='button']");
     By DateOfBirthLearner = By.cssSelector("ant-calendar-picker-input");
     By workPermitImmigrationStatus = By.id("parent-reg-step1-workPermit");
@@ -53,14 +64,20 @@ public class LearnerRegistrationPage {
     By clickHomeLanguage = By.xpath("//li[contains(text(),'English')]");
     By clickRace = By.xpath("//div[contains(text(),'Select a Race')]");
     By ethnicity = By.xpath("//li[contains(text(),'White')]");
-    By grade8 = By.id("learner-reg-grade8");
-    By grade1 = By.id("learner-reg-grade1");
+    By grade8 = By.xpath("//span[contains(text(),'Grade 8')]");
+//    By grade8 = By.id("learner-reg-grade8");
+    By grade1 = By.xpath("//span[contains(text(),'Grade 1')]");
+//    By grade1 = By.id("learner-reg-grade1");
     By preferedLanguageOfTeaching = By.xpath("//div[contains(text(),'Select Preferred Language of Teaching')]");
     By languageOfTeaching = By.cssSelector(".learner-reg-preferredLanguage-1");
-    By IsInstitutionInGauteng = By.id("learner-reg-isSchoolGauteng");
-    By SchoolIsPrivate = By.id("learner-reg-isSchoolPublic");
-    By SchoolIsPublic = By.id("learner-reg-isNotSchoolPublic");
-    By ApplyToSchools = By.id("learner-reg-submitButton");
+    By IsInstitutionInGauteng = By.xpath("//span[contains(text(),'Yes')]");
+//    By IsInstitutionInGauteng = By.id("learner-reg-isSchoolGauteng");
+    By SchoolIsPublic = By.xpath("//span[contains(text(),'Public')]");
+//    By SchoolIsPublic = By.id("learner-reg-isSchoolPublic");
+    By SchoolIsPrivate = By.xpath("//span[contains(text(),'Private')]");
+//    By SchoolIsPrivate = By.id("learner-reg-isNotSchoolPublic");
+    By ApplyToSchools = By.cssSelector("[text ='Apply to Schools']");
+//    By ApplyToSchools = By.id("learner-reg-submitButton");
     By ApplicationOption = By.xpath("//div[contains(text(),'Home Address Within Schools Feeder Zone')]");
     By HomeFeederZoneApplicationOption = By.xpath("//li[contains(text(),'Home Address Within Schools Feeder Zone')]");
     By SiblingOrPreviousSchoolOption = By.xpath("//li[contains(text(),'Sibling/Previous School')]");
@@ -68,14 +85,16 @@ public class LearnerRegistrationPage {
     By HomeAddressWithin30km = By.xpath("//li[contains(text(),'Home Address Within 30km')]");
     By SchoolsOfSpecializationOrFocusSchools = By.xpath("//li[contains(text(),'Schools Of Specialization/Focus Schools')]");
     By HomeAddressBeyond30km = By.xpath("//li[contains(text(),'Home Address Beyond 30km')]");
-    By SchoolName = By.id("learner-application-searchSchoolName");
-//    By SchoolName = By.id("learner-reg-institutionName");
+    By SchoolName = By.cssSelector("[placeholder='Search School Name']");
+//    By SchoolName = By.id("learner-application-searchSchoolName");
     By SchoolSearchResultsTitle = By.xpath("//div[contains(text(),'School Search Result(s)')]"); //get text of search results
     By selectSchoolsToApply = By.cssSelector("ant-checkbox-input");
     By monthOfBirth = By.cssSelector(".ant-calendar-body td");
-    By submitApplications = By.id("learner-application-submitApplications");
+    By submitApplications = By.cssSelector("[text='Submit Applications']");
+//    By submitApplications = By.id("learner-application-submitApplications");
     By ApplyToMoreSchools = By.xpath("//span[contains(text(),'Apply to More Schools')]");
     By ContinueToDocuments = By.cssSelector(".gde-app-success-upload-documents-button");
+//    By ContinueToDocuments = By.xpath("//span[contains(text(),'Continue to Documents')]");
     //    By SchoolSearchResultsCheck = By.cssSelector("gde-school-result-details-col-2");
     By SchoolSearchResultsCheck = By.cssSelector(".gde-school-results .gde-school-result:nth-child(1) .ant-checkbox-input");
     By DHAOkValidation = By.cssSelector(".gde-modal-ok-button");
@@ -285,8 +304,8 @@ public class LearnerRegistrationPage {
 
 
     public void PreferredLanguageOfTeaching(String teachingLanguage) throws InterruptedException {
-        driver.findElement(preferedLanguageOfTeaching).click();//sendKeys(teachingLanguage);
-        Thread.sleep(500);
+        driver.findElement(preferedLanguageOfTeaching).click();
+        Thread.sleep(1000);
         driver.findElement(languageOfTeaching).click();
     }
 

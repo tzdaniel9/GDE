@@ -1,5 +1,6 @@
 package base;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -10,10 +11,15 @@ import resources.ElementUtils;
 import resources.JavaScriptUtil;
 import testCases.ParentRegistrationSACitizenTest;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class testBase {
     private WebDriver driver;
+    private Properties prop;
     protected HomePage homePage;
     protected ParentRegistrationPage parentRegistrationPage;
     protected ElementUtils elementUtils;
@@ -26,10 +32,21 @@ public class testBase {
     @BeforeClass
     public void setUp(){
 
+        try {
+            Properties prop = new Properties();
+            FileInputStream ip = new FileInputStream(System.getProperty("user.dir")+ "\\src\\main\\java\\config" +
+                    "\\config.properties");
+            prop.load(ip);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        System.setProperty("webdriver.gecko.driver", "\\C:\\Users\\dany1\\Documents\\applitools-\\MockGDE\\src\\main\\java\\QA\\resources\\drivers\\geckodriver.exe");
+        WebDriverManager.firefoxdriver().setup();
+//        System.setProperty("webdriver.gecko.driver", "C:\\Users\\dany1\\Documents\\BoxFusionGDE\\src\\main\\java\\drivers\\geckodriver.exe");
         driver = new FirefoxDriver();
-        driver.get("https://schoolsadmissions-web-portal-perf2.azurewebsites.net/");
+        driver.get("https://schoolsadmissions-web-portal-test.azurewebsites.net/");
 
         homePage = new HomePage(driver);
         parentRegistrationPage = new ParentRegistrationPage(driver);

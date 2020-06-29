@@ -14,31 +14,32 @@ public class NonSADocumentedParentRegistrationTest extends testBase {
     LearnerRegistrationPage learnerRegistrationPage;
     DocumentsPage documentsPage;
 
-    String phoneNumber = "0700000064";
+    String phoneNumber = "0700000094";
     String password = "Test@1234";
     String confirmPassword = "Test@1234";
     String emailAddress = "box@fusion.co.za";
-    String passportNumberParent = "zz000064";
+    String passportNumberParent = "zz000094";
     String name = "box";
     String surname = "fusion";
     String OTPNumber = "000000";
     String homeAddress = "32 Nora Avenue";
     String workAddress = "265 West Ave";
-    String passportNumberLearner = "zz100001";
+    String passportNumberLearner = "zz100024";
     String nameLearner = "boxed";
     String surnameLearner = "fusion";
     String dateOfBirth = "2008-01-01";
     String LanguageOfTeaching = "English";
-    String schoolName = "La";
+    String schoolName = "willowridge";
 
 
     @Test
     public void parentRegistrationProcessNonSa() throws InterruptedException, AWTException {
         ParentRegistrationPage parentRegistrationPage = homePage.RegisterLink();
+        Thread.sleep(1000);
         parentRegistrationPage.NationalityNonSouthAfricanCitizen();
         parentRegistrationPage.DocumentStatusDocumented();
-        parentRegistrationPage.CountryOfOrigin();  //ToDo
         parentRegistrationPage.ImmigrationStatus();
+        parentRegistrationPage.CountryOfOrigin();  //ToDo
         parentRegistrationPage.PassportNumber(passportNumberParent);
         parentRegistrationPage.Name(name);
         parentRegistrationPage.Surname(surname);
@@ -61,9 +62,9 @@ public class NonSADocumentedParentRegistrationTest extends testBase {
         parentRegistrationPage.submitAddress();
         Thread.sleep(3000);
         parentRegistrationPage.NonIntentToApplyCloseToWork();
-        Thread.sleep(7000);
+        Thread.sleep(3000);
         LearnerRegistrationPage learnerRegistrationPage = parentRegistrationPage.submitWorkAddress();
-        Thread.sleep(4000);
+        Thread.sleep(5000);
         learnerRegistrationPage.NationalityNonSouthAfricanCitizen();
         learnerRegistrationPage.DocumentStatusDocumented();
         learnerRegistrationPage.CountryOfOrigin();
@@ -97,13 +98,13 @@ public class NonSADocumentedParentRegistrationTest extends testBase {
         documentsPage.documntsToBeUploaded(DocumentsPage.IDOrPassport, DocumentsPage.idOrPassportPath);
         Thread.sleep(10000);
         documentsPage.documntsToBeUploaded(DocumentsPage.BirthCertificate, DocumentsPage.BirthCertificatePath);
-        Thread.sleep(10000);
-
-        documentsPage.documntsToBeUploaded(DocumentsPage.ProofOfAddress, DocumentsPage.ProofOfAddressPath);
-        Thread.sleep(10000);
-
-        documentsPage.documntsToBeUploaded(DocumentsPage.LatestReport, DocumentsPage.LatestReportPath);
-        Thread.sleep(10000);
+        Thread.sleep(20000);
+//
+//        documentsPage.documntsToBeUploaded(DocumentsPage.ProofOfAddress, DocumentsPage.ProofOfAddressPath);
+//        Thread.sleep(10000);
+//
+//        documentsPage.documntsToBeUploaded(DocumentsPage.LatestReport, DocumentsPage.LatestReportPath);
+//        Thread.sleep(10000);
 
         documentsPage.goBackToDashBoard();
 

@@ -10,10 +10,10 @@ import static resources.ElementUtils.UploadFileRobot.uploadFile;
 
 public class DocumentsPage {
 
-    public static String idOrPassportPath = "C:\\Users\\dany1\\Desktop\\tester.jpg";
-    public static String ProofOfAddressPath = "C:\\Users\\dany1\\Desktop\\tester.jpg";
-    public static String BirthCertificatePath = "C:\\Users\\dany1\\Desktop\\tester.jpg";
-    public static String LatestReportPath = "C:\\Users\\dany1\\Desktop\\tester.jpg";
+    public static String idOrPassportPath = "\\src\\main\\java\\documents\\tester.jpg";
+    public static String ProofOfAddressPath = "\\src\\main\\java\\documents\\tester.jpg";
+    public static String BirthCertificatePath = "\\src\\main\\java\\documents\\tester.jpg";
+    public static String LatestReportPath = "\\src\\main\\java\\documents\\tester.jpg";
 
     public static By IDOrPassport = By.className("gde-parent-docs-upload-button-idOrPassport");
     public static By ProofOfAddress = By.className("gde-parent-docs-upload-button-homeAdress");

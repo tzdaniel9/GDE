@@ -1,13 +1,25 @@
 package resources;
 
 import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import org.testng.*;
+import org.testng.xml.XmlSuite;
+import org.testng.IReporter;
+import org.testng.IResultMap;
+import org.testng.ISuite;
+import org.testng.ISuiteResult;
+import org.testng.ITestContext;
+import org.testng.ITestResult;
 
 import java.io.File;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Calendar;
 
-public class ExtentManager {
+public class ExtentManager implements IReporter {
     private  static ExtentReports extent;
 
     public static ExtentReports createInstance(){
@@ -35,4 +47,5 @@ public class ExtentManager {
         String fileName = "Automation Report"+ "_" + d.toString().replace(":","_").replace(" ","_")+ ".html";
         return fileName;
     }
+
 }
